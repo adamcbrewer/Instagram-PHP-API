@@ -632,7 +632,10 @@ class Instagram
 
         curl_close($ch);
 
-        return json_decode($jsonData);
+        $jsonData = json_decode($jsonData);
+        $jsonData->_reqests_remaining = $this->getRateLimit();
+
+        return $jsonData;
     }
 
     /**
